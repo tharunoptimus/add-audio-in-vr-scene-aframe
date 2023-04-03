@@ -55,7 +55,30 @@
 
         <a-sky src="#sky" rotation="0 -130 0"></a-sky>
 
+        <script>
+
+            function playBGSound() {
+                let audio = document.getElementById("backgroundAudio")
+                try {
+                    audio.volume = 0.2
+                    audio
+                        .play()
+                        .then()
+                        .catch(() => {
+                            setTimeout(() => {
+                                playBGSound()
+                            })
+                        })
+                } catch (error) {
+                    console.log("User has not interacted with the page yet!")
+                }
+            }
+
+            playBGSound()
+        </script>
+
     </a-scene>
+
 </body>
 
 </html>
